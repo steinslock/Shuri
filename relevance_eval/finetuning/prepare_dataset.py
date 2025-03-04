@@ -5,17 +5,6 @@ from PIL import Image
 import requests
 from io import BytesIO
 
-def download_image(url, save_path):
-    """下载图像并保存到指定路径"""
-    try:
-        response = requests.get(url, stream=True)
-        response.raise_for_status()
-        img = Image.open(BytesIO(response.content))
-        img.save(save_path)
-        return True
-    except Exception as e:
-        print(f"下载图像失败: {e}")
-        return False
 
 def create_dataset_structure(data_file, output_dir):
     """创建微调数据集的结构"""
