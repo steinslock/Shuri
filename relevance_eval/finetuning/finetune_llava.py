@@ -8,7 +8,8 @@ from transformers import (
     LlavaForConditionalGeneration,
     Trainer, 
     TrainingArguments,
-    DataCollatorForLanguageModeling
+    DataCollatorForLanguageModeling,
+    BitsAndBytesConfig
 )
 from peft import (
     LoraConfig, 
@@ -19,7 +20,7 @@ from peft import (
 import bitsandbytes as bnb
 
 # 1. 配置基本参数
-OUTPUT_DIR = "./llava_lora_finetuned"
+OUTPUT_DIR = "relevance_eval/finetuning/LoRA_model"
 LORA_R = 16                # LoRA秩
 LORA_ALPHA = 32            # LoRA缩放因子
 LORA_DROPOUT = 0.05        # LoRA dropout率
@@ -27,8 +28,8 @@ LEARNING_RATE = 5e-5       # 学习率
 BATCH_SIZE = 1             # 批次大小
 GRADIENT_ACCUMULATION_STEPS = 8  # 梯度累积步数
 NUM_EPOCHS = 5             # 训练轮数
-MAX_SEQ_LENGTH = 512       # 最大序列长度
-DATASET_PATH = "./shurijo_dataset"  # 数据集路径
+MAX_SEQ_LENGTH = 2048       # 最大序列长度
+DATASET_PATH = "relevance_eval/finetuning/str_finetune_data"  # 数据集路径
 
 # 2. 定义自定义数据集类
 class LlavaFinetuningDataset(Dataset):
@@ -52,6 +53,7 @@ class LlavaFinetuningDataset(Dataset):
     
     def __getitem__(self, idx):
         item = self.data[idx]
+        # 直接使用完整路径打开图像
         image = Image.open(item["image_path"]).convert("RGB")
         
         # 准备对话格式
@@ -116,10 +118,18 @@ def main():
     model_id = "llava-hf/llava-1.5-7b-hf"
     processor = AutoProcessor.from_pretrained(model_id)
     
+    # 创建4位量化配置
+    quantization_config = BitsAndBytesConfig(
+        load_in_4bit=True,
+        bnb_4bit_compute_dtype=torch.float16,
+        bnb_4bit_quant_type="nf4",
+        bnb_4bit_use_double_quant=True
+    )
+    
     # 使用4位量化加载模型
     model = LlavaForConditionalGeneration.from_pretrained(
         model_id,
-        quantization_config=bnb.nn.modules.Linear4bit.quantize_config(),
+        quantization_config=quantization_config,
         device_map="auto",
         torch_dtype=torch.float16
     )
@@ -157,6 +167,7 @@ def main():
         fp16=True,
         logging_steps=10,
         save_strategy="epoch",
+        evaluation_strategy="epoch",
         save_total_limit=2,
         remove_unused_columns=False,
         push_to_hub=False,
@@ -169,6 +180,7 @@ def main():
         model=model,
         args=training_args,
         train_dataset=train_dataset,
+        eval_dataset=train_dataset,
         data_collator=collate_fn,
     )
     
