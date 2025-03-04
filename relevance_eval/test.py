@@ -108,7 +108,19 @@ if __name__ == "__main__":
         text_list = [row[0] for row in text_reader]  # 假设文本在第一列
 
     # 遍历图像文件夹中的每一张图片
-    for idx, image_filename in enumerate(sorted(os.listdir(image_folder))):
+    # 获取所有图像文件名并按数字顺序排序
+    image_filenames = os.listdir(image_folder)
+    
+    # 自定义排序函数，提取文件名中的数字部分进行排序
+    def extract_number(filename):
+        # 从文件名中提取数字部分
+        digits = ''.join(filter(str.isdigit, filename))
+        return int(digits) if digits else 0
+    
+    # 使用自定义排序函数对文件名进行排序
+    image_filenames = sorted(image_filenames, key=extract_number)
+    
+    for idx, image_filename in enumerate(image_filenames):
         image_path = os.path.join(image_folder, image_filename)
         
         # 确保索引不超出文本列表的范围
