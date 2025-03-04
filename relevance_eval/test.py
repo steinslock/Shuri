@@ -99,8 +99,8 @@ def analyze_with_deepseek(text_input, prompt_template):
 # 演示如何使用这些函数
 if __name__ == "__main__":
     # 图像和文本文件路径
-    image_folder = "/home/qiangminc/codes/Shuri_eval/relevance_eval/dataset/image"
-    text_csv_path = "/home/qiangminc/codes/Shuri_eval/relevance_eval/dataset/text_csv.csv"
+    image_folder = "/home/qiangminc/codes/Shuri/relevance_eval/dataset/image"
+    text_csv_path = "/home/qiangminc/codes/Shuri/relevance_eval/dataset/text_csv.csv"
     
     # 读取CSV文件中的文本
     with open(text_csv_path, newline='', encoding='utf-8') as csvfile:
@@ -123,13 +123,11 @@ if __name__ == "__main__":
         llava_result = process_image_with_llava(image_path, default_prompt)
         
         # 生成分点总结的prompt
-        summary_prompt_generated = generate_summary_prompt(llava_result)
-        summary_result = analyze_with_deepseek(llava_result, summary_prompt_generated)
+        summary_result = analyze_with_deepseek(llava_result, summerize_template)
         print(f"\n分点总结结果（图像: {image_filename}）：")
         print(summary_result)
         
         # # 生成比较分析的prompt
-        # comparison_prompt_generated = generate_comparison_prompt(llava_result, original_comment)
-        # comparison_result = analyze_with_deepseek(None, comparison_prompt_generated)
+        # comparison_result = analyze_with_deepseek(None, comparison_templateted)
         # print(f"\n比较分析结果（图像: {image_filename}）：")
         # print(comparison_result)

@@ -2,9 +2,16 @@ import os
 import json
 import argparse
 from PIL import Image
-import requests
-from io import BytesIO
+import shutil
 
+def copy_image(image_path, target_path):
+    """复制本地图像"""
+    try:
+        shutil.copy(image_path, target_path)
+        return True
+    except Exception as e:
+        print(f"复制图像失败: {e}")
+        return False
 
 def create_dataset_structure(data_file, output_dir):
     """创建微调数据集的结构"""
@@ -18,25 +25,20 @@ def create_dataset_structure(data_file, output_dir):
         data = json.load(f)
     
     for i, item in enumerate(data):
-        image_url = item.get("image_url", "")
         image_file = f"image_{i}.jpg"
         image_path = os.path.join(images_dir, image_file)
         
-        # 如果有图像URL，下载图像
-        if image_url:
-            success = download_image(image_url, image_path)
-            if not success:
-                continue
-        # 如果有本地图像路径，复制图像
-        elif "local_image_path" in item:
+        # 处理本地图像路径
+        if "local_image_path" in item:
             try:
-                img = Image.open(item["local_image_path"])
-                img.save(image_path)
+                success = copy_image(item["local_image_path"], image_path)
+                if not success:
+                    continue
             except Exception as e:
                 print(f"复制图像失败: {e}")
                 continue
         else:
-            print(f"跳过条目 {i}: 没有图像URL或本地路径")
+            print(f"跳过条目 {i}: 没有本地图像路径")
             continue
         
         # 添加数据条目
