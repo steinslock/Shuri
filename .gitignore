@@ -24,6 +24,5 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-relevance_eval/finetuning/finetuning_dataset/
-relevance_eval/finetuning/str_dataset
-relevance_eval/finetuning/LoRA_model
+relevance_eval/finetuning_new/finetuning_dataset/images
+
