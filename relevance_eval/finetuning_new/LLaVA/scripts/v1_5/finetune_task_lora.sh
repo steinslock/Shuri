@@ -30,7 +30,7 @@ deepspeed --include $include llava/train/train_mem.py \
     --per_device_train_batch_size 16 \
     --per_device_eval_batch_size 8 \
     --gradient_accumulation_steps 2 \
-    --evaluation_strategy "steps" --eval_steps 10 \
+    --evaluation_strategy "no"  \
     --save_strategy "steps" \
     --save_steps 100 \
     --save_total_limit 3 \

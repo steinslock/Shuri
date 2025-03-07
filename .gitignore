@@ -24,8 +24,8 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-relevance_eval/finetuning_new/finetuning_dataset/images
-relevance_eval/finetuning_new/finetuning_dataset/images_converted
+relevance_eval/finetuning_new/finetuning_dataset/image
+
 relevance_eval/finetuning_new/LLaVA/checkpoints
-relevance_eval/finetuning_new/finetuning_dataset/首里城-正殿.zip
+
 
