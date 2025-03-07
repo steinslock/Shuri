@@ -1,0 +1,7 @@
+{"time":"2025-03-07T18:42:19.47381676+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/wandb/run-20250307_184219-akhw7lst/logs/debug-core.log"}
+{"time":"2025-03-07T18:42:19.58264499+09:00","level":"INFO","msg":"created new stream","id":"akhw7lst"}
+{"time":"2025-03-07T18:42:19.582682415+09:00","level":"INFO","msg":"stream: started","id":"akhw7lst"}
+{"time":"2025-03-07T18:42:19.582701712+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"akhw7lst"}
+{"time":"2025-03-07T18:42:19.582726314+09:00","level":"INFO","msg":"sender: started","stream_id":"akhw7lst"}
+{"time":"2025-03-07T18:42:19.582737103+09:00","level":"INFO","msg":"handler: started","stream_id":"akhw7lst"}
+{"time":"2025-03-07T18:42:19.878149345+09:00","level":"INFO","msg":"Starting system monitor"}

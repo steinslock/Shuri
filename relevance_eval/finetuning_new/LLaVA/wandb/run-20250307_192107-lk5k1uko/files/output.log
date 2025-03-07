@@ -1,0 +1,74 @@
+  0%|                                                                                       | 0/760 [00:00<?, ?it/s]/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+  1%|▌                                                                            | 6/760 [02:13<4:30:15, 21.51s/it]Traceback (most recent call last):
+{'loss': 1.4523, 'learning_rate': 4.347826086956522e-06, 'epoch': 0.01}
+{'loss': 1.4428, 'learning_rate': 8.695652173913044e-06, 'epoch': 0.02}
+{'loss': 1.4358, 'learning_rate': 1.3043478260869566e-05, 'epoch': 0.03}
+{'loss': 1.4226, 'learning_rate': 1.739130434782609e-05, 'epoch': 0.04}
+{'loss': 1.4281, 'learning_rate': 2.173913043478261e-05, 'epoch': 0.05}
+{'loss': 1.3964, 'learning_rate': 2.608695652173913e-05, 'epoch': 0.06}
+  File "/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/llava/train/train_mem.py", line 4, in <module>
+    train(attn_implementation="flash_attention_2")
+  File "/home/qiangminc/codes/LLaVA/llava/train/train.py", line 969, in train
+    trainer.train()
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/trainer.py", line 1539, in train
+    return inner_training_loop(
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/trainer.py", line 1836, in _inner_training_loop
+    for step, inputs in enumerate(epoch_iterator):
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/accelerate/data_loader.py", line 394, in __iter__
+    next_batch = next(dataloader_iter)
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+    data = self._next_data()
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 674, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 51, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 51, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/qiangminc/codes/LLaVA/llava/train/train.py", line 716, in __getitem__
+    image = processor.preprocess(image, return_tensors='pt')['pixel_values'][0]
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/models/clip/image_processing_clip.py", line 299, in preprocess
+    images = [
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/models/clip/image_processing_clip.py", line 300, in <listcomp>
+    self.resize(image=image, size=size, resample=resample, input_data_format=input_data_format)
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/models/clip/image_processing_clip.py", line 168, in resize
+    return resize(
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/image_transforms.py", line 327, in resize
+    image = to_pil_image(image, do_rescale=do_rescale, input_data_format=input_data_format)
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/image_transforms.py", line 204, in to_pil_image
+    image = image.astype(np.uint8)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/llava/train/train_mem.py", line 4, in <module>
+    train(attn_implementation="flash_attention_2")
+  File "/home/qiangminc/codes/LLaVA/llava/train/train.py", line 969, in train
+    trainer.train()
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/trainer.py", line 1539, in train
+    return inner_training_loop(
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/trainer.py", line 1836, in _inner_training_loop
+    for step, inputs in enumerate(epoch_iterator):
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/accelerate/data_loader.py", line 394, in __iter__
+    next_batch = next(dataloader_iter)
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+    data = self._next_data()
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 674, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 51, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 51, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/qiangminc/codes/LLaVA/llava/train/train.py", line 716, in __getitem__
+    image = processor.preprocess(image, return_tensors='pt')['pixel_values'][0]
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/models/clip/image_processing_clip.py", line 299, in preprocess
+    images = [
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/models/clip/image_processing_clip.py", line 300, in <listcomp>
+    self.resize(image=image, size=size, resample=resample, input_data_format=input_data_format)
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/models/clip/image_processing_clip.py", line 168, in resize
+    return resize(
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/image_transforms.py", line 327, in resize
+    image = to_pil_image(image, do_rescale=do_rescale, input_data_format=input_data_format)
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/image_transforms.py", line 204, in to_pil_image
+    image = image.astype(np.uint8)
+KeyboardInterrupt

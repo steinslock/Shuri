@@ -1,0 +1,7 @@
+{"time":"2025-03-07T16:46:31.088093457+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/wandb/run-20250307_164631-j27senbu/logs/debug-core.log"}
+{"time":"2025-03-07T16:46:31.201746292+09:00","level":"INFO","msg":"created new stream","id":"j27senbu"}
+{"time":"2025-03-07T16:46:31.201827525+09:00","level":"INFO","msg":"stream: started","id":"j27senbu"}
+{"time":"2025-03-07T16:46:31.201844116+09:00","level":"INFO","msg":"sender: started","stream_id":"j27senbu"}
+{"time":"2025-03-07T16:46:31.201842325+09:00","level":"INFO","msg":"handler: started","stream_id":"j27senbu"}
+{"time":"2025-03-07T16:46:31.201920249+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"j27senbu"}
+{"time":"2025-03-07T16:46:31.543452578+09:00","level":"INFO","msg":"Starting system monitor"}

@@ -1,0 +1,26 @@
+  0%|                                                                                                                 | 0/760 [00:00<?, ?it/s]/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+  3%|██▊                                                                                                   | 21/760 [04:18<2:29:30, 12.14s/it]
+{'loss': 1.4521, 'learning_rate': 4.347826086956522e-06, 'epoch': 0.01}
+{'loss': 1.4429, 'learning_rate': 8.695652173913044e-06, 'epoch': 0.02}
+{'loss': 1.4362, 'learning_rate': 1.3043478260869566e-05, 'epoch': 0.03}
+{'loss': 1.4226, 'learning_rate': 1.739130434782609e-05, 'epoch': 0.04}
+{'loss': 1.4281, 'learning_rate': 2.173913043478261e-05, 'epoch': 0.05}
+{'loss': 1.3969, 'learning_rate': 2.608695652173913e-05, 'epoch': 0.06}
+{'loss': 1.3634, 'learning_rate': 3.0434782608695656e-05, 'epoch': 0.07}
+{'loss': 1.3359, 'learning_rate': 3.478260869565218e-05, 'epoch': 0.08}
+{'loss': 1.2679, 'learning_rate': 3.91304347826087e-05, 'epoch': 0.09}
+{'loss': 1.2059, 'learning_rate': 4.347826086956522e-05, 'epoch': 0.1}
+{'loss': 1.1429, 'learning_rate': 4.782608695652174e-05, 'epoch': 0.12}
+{'loss': 1.0976, 'learning_rate': 5.217391304347826e-05, 'epoch': 0.13}
+{'loss': 1.041, 'learning_rate': 5.652173913043478e-05, 'epoch': 0.14}
+{'loss': 0.9418, 'learning_rate': 6.086956521739131e-05, 'epoch': 0.15}
+{'loss': 0.8764, 'learning_rate': 6.521739130434783e-05, 'epoch': 0.16}
+{'loss': 0.8105, 'learning_rate': 6.956521739130436e-05, 'epoch': 0.17}
+{'loss': 0.7365, 'learning_rate': 7.391304347826086e-05, 'epoch': 0.18}
+{'loss': 0.6841, 'learning_rate': 7.82608695652174e-05, 'epoch': 0.19}
+{'loss': 0.6013, 'learning_rate': 8.260869565217392e-05, 'epoch': 0.2}
+{'loss': 0.5335, 'learning_rate': 8.695652173913044e-05, 'epoch': 0.21}
+{'loss': 0.4384, 'learning_rate': 9.130434782608696e-05, 'epoch': 0.22}

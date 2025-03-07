@@ -1,0 +1,14 @@
+  0%|                                                                                                               | 0/32464 [00:00<?, ?it/s]/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+  0%|                                                                                                    | 9/32464 [00:24<20:25:08,  2.26s/it]
+{'loss': 1.3785, 'learning_rate': 2.053388090349076e-07, 'epoch': 0.0}
+{'loss': 1.4695, 'learning_rate': 4.106776180698152e-07, 'epoch': 0.0}
+{'loss': 1.5899, 'learning_rate': 6.160164271047228e-07, 'epoch': 0.0}
+{'loss': 1.565, 'learning_rate': 8.213552361396304e-07, 'epoch': 0.0}
+{'loss': 1.4085, 'learning_rate': 1.026694045174538e-06, 'epoch': 0.0}
+{'loss': 1.5026, 'learning_rate': 1.2320328542094456e-06, 'epoch': 0.0}
+{'loss': 1.4332, 'learning_rate': 1.4373716632443531e-06, 'epoch': 0.0}
+{'loss': 1.4035, 'learning_rate': 1.6427104722792609e-06, 'epoch': 0.0}
+{'loss': 1.3947, 'learning_rate': 1.8480492813141684e-06, 'epoch': 0.0}
