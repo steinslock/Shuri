@@ -48202,20 +48202,6 @@
         ]
     },
     {
-        "id": "3621",
-        "image": "3621.jpg",
-        "conversations": [
-            {
-                "from": "human",
-                "value": "<image>\nWhat is the name of this structure? Provide a detailed explanation of its history and where it is located."
-            },
-            {
-                "from": "gpt",
-                "value": "This is Shurijo Castle, located in Naha, Okinawa, Japan. It was the palace of the Ryukyu Kingdom and reflects a blend of Chinese and Ryukyuan architecture. Originally built in the 14th century, the castle was destroyed during World War II, later rebuilt, and then severely damaged in a fire in 2021. It is currently under reconstruction."
-            }
-        ]
-    },
-    {
         "id": "3622",
         "image": "3622.jpg",
         "conversations": [

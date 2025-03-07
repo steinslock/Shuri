@@ -1,0 +1,46 @@
+  0%|                                                                                   | 0/570 [00:00<?, ?it/s]/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+  2%|█▎                                                                      | 10/570 [02:08<1:53:33, 12.17s/it]Traceback (most recent call last):
+{'loss': 1.443, 'learning_rate': 5.555555555555556e-06, 'epoch': 0.01}
+{'loss': 1.4199, 'learning_rate': 1.1111111111111112e-05, 'epoch': 0.02}
+{'loss': 1.4163, 'learning_rate': 1.6666666666666667e-05, 'epoch': 0.03}
+{'loss': 1.428, 'learning_rate': 2.2222222222222223e-05, 'epoch': 0.04}
+{'loss': 1.4216, 'learning_rate': 2.777777777777778e-05, 'epoch': 0.05}
+{'loss': 1.3806, 'learning_rate': 3.3333333333333335e-05, 'epoch': 0.06}
+{'loss': 1.3225, 'learning_rate': 3.888888888888889e-05, 'epoch': 0.07}
+{'loss': 1.3026, 'learning_rate': 4.4444444444444447e-05, 'epoch': 0.08}
+{'loss': 1.2136, 'learning_rate': 5e-05, 'epoch': 0.09}
+{'loss': 1.1391, 'learning_rate': 5.555555555555556e-05, 'epoch': 0.1}
+  File "/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/llava/train/train_mem.py", line 4, in <module>
+    train(attn_implementation="flash_attention_2")
+  File "/home/qiangminc/codes/LLaVA/llava/train/train.py", line 969, in train
+    trainer.train()
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/trainer.py", line 1539, in train
+    return inner_training_loop(
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/trainer.py", line 1929, in _inner_training_loop
+    self._maybe_log_save_evaluate(tr_loss, model, trial, epoch, ignore_keys_for_eval)
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/trainer.py", line 2291, in _maybe_log_save_evaluate
+    metrics = self.evaluate(ignore_keys=ignore_keys_for_eval)
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/trainer.py", line 3091, in evaluate
+    eval_dataloader = self.get_eval_dataloader(eval_dataset)
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/trainer.py", line 846, in get_eval_dataloader
+    raise ValueError("Trainer: evaluation requires an eval_dataset.")
+ValueError: Trainer: evaluation requires an eval_dataset.
+Traceback (most recent call last):
+  File "/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/llava/train/train_mem.py", line 4, in <module>
+    train(attn_implementation="flash_attention_2")
+  File "/home/qiangminc/codes/LLaVA/llava/train/train.py", line 969, in train
+    trainer.train()
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/trainer.py", line 1539, in train
+    return inner_training_loop(
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/trainer.py", line 1929, in _inner_training_loop
+    self._maybe_log_save_evaluate(tr_loss, model, trial, epoch, ignore_keys_for_eval)
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/trainer.py", line 2291, in _maybe_log_save_evaluate
+    metrics = self.evaluate(ignore_keys=ignore_keys_for_eval)
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/trainer.py", line 3091, in evaluate
+    eval_dataloader = self.get_eval_dataloader(eval_dataset)
+  File "/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/trainer.py", line 846, in get_eval_dataloader
+    raise ValueError("Trainer: evaluation requires an eval_dataset.")
+ValueError: Trainer: evaluation requires an eval_dataset.

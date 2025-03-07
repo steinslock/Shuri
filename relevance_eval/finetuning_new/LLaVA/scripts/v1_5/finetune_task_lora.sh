@@ -26,13 +26,13 @@ deepspeed --include $include llava/train/train_mem.py \
     --group_by_modality_length False \
     --bf16 True \
     --output_dir $output_dir \
-    --num_train_epochs 8 \
+    --num_train_epochs 6 \
     --per_device_train_batch_size 16 \
-    --per_device_eval_batch_size 1 \
+    --per_device_eval_batch_size 8 \
     --gradient_accumulation_steps 2 \
-    --evaluation_strategy "steps" --eval_steps 5000 \
+    --evaluation_strategy "steps" --eval_steps 10 \
     --save_strategy "steps" \
-    --save_steps 2000 \
+    --save_steps 100 \
     --save_total_limit 3 \
     --learning_rate 1e-4 \
     --weight_decay 0. \
