@@ -25,4 +25,5 @@ var/
 .installed.cfg
 *.egg
 relevance_eval/finetuning_new/finetuning_dataset/images
+relevance_eval/finetuning_new/LLaVA/checkpoints
 
