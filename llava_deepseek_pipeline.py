@@ -90,10 +90,10 @@ def process_with_llava_official(model, tokenizer, image_processor, conv_mode, im
 
 def parse_args():
     parser = argparse.ArgumentParser(description="LLaVA推理管道")
-    parser.add_argument("--llava_model_path", type=str, default="/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/checkpoints/llava-v1.5-7b-lora-merged", help="微调后的LLaVA模型路径")
+    parser.add_argument("--llava_model_path", type=str, default="/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/checkpoints/llava-v1.5-7b-lora-merged-正殿", help="微调后的LLaVA模型路径")
     parser.add_argument("--llava_model_base", type=str, default=None, help="LLaVA基础模型路径")
     parser.add_argument("--image_path", type=str, required=True, help="输入图像路径")
-    parser.add_argument("--image_prompt", type=str, default="What is shown in this image? If there is a building, tell me the name of it and describe it in detail.", help="图像提示")
+    parser.add_argument("--image_prompt", type=str, default="What is shown in this image? If there is a building, tell me the name of it and describe it in detail. Additionaly, tell me the weather in the image.", help="图像提示")
     parser.add_argument("--output_file", type=str, help="输出结果保存路径")
     parser.add_argument("--load_4bit", action="store_true", default=True, help="以4bit精度加载模型")
     parser.add_argument("--load_8bit", action="store_true", help="以8bit精度加载模型")
