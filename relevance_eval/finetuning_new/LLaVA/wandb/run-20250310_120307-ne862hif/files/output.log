@@ -1,0 +1,7 @@
+  0%|                                                                                                     | 0/75 [00:00<?, ?it/s]/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/home/qiangminc/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+  3%|██▍                                                                                          | 2/75 [00:30<17:27, 14.34s/it]
+{'loss': 2.1278, 'learning_rate': 1.6666666666666667e-05, 'epoch': 0.07}
+{'loss': 2.1646, 'learning_rate': 3.3333333333333335e-05, 'epoch': 0.13}

@@ -7,20 +7,6 @@ from PIL import Image
 LLAVA_PATH = "/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA"
 sys.path.append(LLAVA_PATH)
 
-# 检查sentencepiece是否正确安装
-try:
-    import sentencepiece as spm
-    print("sentencepiece已成功导入")
-except ImportError:
-    print("警告: sentencepiece导入失败，尝试再次安装")
-    os.system("pip install sentencepiece==0.1.99")
-    try:
-        import sentencepiece as spm
-        print("sentencepiece现在已成功导入")
-    except ImportError:
-        print("错误: 无法导入sentencepiece，请手动检查安装")
-        sys.exit(1)
-
 from llava.model.builder import load_pretrained_model
 from llava.mm_utils import get_model_name_from_path
 from llava.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN
@@ -28,7 +14,7 @@ from llava.conversation import conv_templates, SeparatorStyle
 from llava.mm_utils import tokenizer_image_token
 
 # 设置模型路径
-lora_model_path = "/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/checkpoints/llava-v.15-7b-lora-正殿"
+lora_model_path = "/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/checkpoints/llava-v.15-7b-lora-综合"
 # 检查LoRA目录中的文件
 print(f"检查LoRA目录中的文件:")
 if os.path.exists(lora_model_path):
@@ -39,7 +25,7 @@ else:
     print(f"警告: LoRA目录不存在: {lora_model_path}")
 
 # 设置基础模型 - 根据您的环境配置更改此路径
-base_model_path = "/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/checkpoints/llava-v1.5-7b"  # 使用Hugging Face上的模型名称或本地路径
+base_model_path = "/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/checkpoints/llava-v1.5-7b"  
 # 检查基础模型目录中的文件
 print(f"检查基础模型目录中的文件:")
 if os.path.exists(base_model_path):
@@ -54,34 +40,23 @@ else:
     print(f"警告: 基础模型目录不存在: {base_model_path}")
 
 # 设置图像路径和提示
-image_path = "/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/finetuning_dataset/image/守礼門/3.jpg"
-prompt = """You must provide a complete response by strictly following the structured format below. Do not skip any sections. If information is not available, state "Information not available."  
-
-###  Building Information  
+image_path = "/home/qiangminc/codes/Shuri/relevance_eval/dataset/image/1562.jpg"
+prompt = """
+You must provide a complete response by strictly following the structured format below. Do not skip any sections. If information is not available, state "Information not available."  
 - 1. What is the name of this building?  
 - 2. Where is it geographically located?  
-- 3. Provide a brief historical background, including its construction period and cultural significance.  
-
-###  Architectural Style and Exterior Features  
+- 3. Provide a brief historical background, including its construction period, cultural significance and literary connections.  
 - 4. What architectural style does this building belong to?  
 - 5. Describe the roof design, decorative elements, colors, and materials used in its construction.  
-
-### Surrounding Environment  
 - 6. Are there any other buildings nearby? If so, describe them.  
 - 7. Is there any vegetation, roads, or other notable environmental features?  
 - 8. Is the building currently under maintenance or restoration?  
-
-### Weather and Lighting Conditions  
 - 9. What are the weather conditions in this image? (e.g., sunny, cloudy, rainy)  
-- 10. What is the direction of sunlight? (e.g., morning, noon, evening)  
-- 11. Are there any notable sky features, such as clouds, the sun, or special weather phenomena?  
-
-### People and Activities  
-- 12. Are there any prominent people in the image?  
-- 13. What might be their identities or occupations? (e.g., tourists, staff, locals)  
-- 14. What are they doing? Are their actions related to the building or environment?  
+- 10. Does the image appear to be taken during the day or at night?
+- 11. Are there any prominent people in the image?  
 
 Please answer each question separately in a step-by-step manner, without merging responses.  
+
 """
 
 # 检查图像是否存在
@@ -143,7 +118,7 @@ try:
             inputs=input_ids,
             images=image_tensor,
             do_sample=True,
-            temperature=0.2,
+            temperature=0.1,
             top_p=0.7,
             max_new_tokens=2048,
             use_cache=True

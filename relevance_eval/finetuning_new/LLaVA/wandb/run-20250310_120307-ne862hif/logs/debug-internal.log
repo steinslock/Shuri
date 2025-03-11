@@ -1,0 +1,7 @@
+{"time":"2025-03-10T12:03:07.224072188+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/wandb/run-20250310_120307-ne862hif/logs/debug-core.log"}
+{"time":"2025-03-10T12:03:07.337796682+09:00","level":"INFO","msg":"created new stream","id":"ne862hif"}
+{"time":"2025-03-10T12:03:07.337867557+09:00","level":"INFO","msg":"stream: started","id":"ne862hif"}
+{"time":"2025-03-10T12:03:07.337886622+09:00","level":"INFO","msg":"handler: started","stream_id":"ne862hif"}
+{"time":"2025-03-10T12:03:07.337900407+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"ne862hif"}
+{"time":"2025-03-10T12:03:07.3379143+09:00","level":"INFO","msg":"sender: started","stream_id":"ne862hif"}
+{"time":"2025-03-10T12:03:07.610481834+09:00","level":"INFO","msg":"Starting system monitor"}

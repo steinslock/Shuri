@@ -7,10 +7,10 @@ import csv
 import re
 
 # 定义路径
-images_dir = '/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/finetuning_dataset/image/守礼門'
-csv_file = '/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/finetuning_dataset/finetune_守礼門.csv'
-json_file = '/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/finetuning_dataset/finetune_正殿.json'
-output_json_file = '/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/finetuning_dataset/finetune_守礼門.json'
+images_dir = '/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/finetuning_dataset/image/综合'
+csv_file = '/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/finetuning_dataset/finetune_综合2.csv'
+json_file = '/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/finetuning_dataset/finetune_综合.json'
+output_json_file = '/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/finetuning_dataset/finetune_综合2.json'
 
 def main():
     # 读取原始JSON文件

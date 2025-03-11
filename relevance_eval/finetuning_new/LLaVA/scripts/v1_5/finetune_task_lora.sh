@@ -5,10 +5,10 @@ export TRANSFORMERS_OFFLINE=1 # 设置为1时，启用Transformers的离线模�
 # export CUDA_VISIBLE_DEVICES=2,5
 include=localhost:0,1,2,3 # 设置显卡id
 
-model_name_or_path=/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/checkpoints/llava-v1.5-7b-lora-merged-Shureimon # 模型名称
-data_path=/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/finetuning_dataset/finetune_守礼門.json # 训练的json
-image_folder=/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/finetuning_dataset/image/守礼門 # 训练的图像数据
-output_dir=/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/checkpoints/llava-v.15-7b-lora-Shureimon # 输出目录
+model_name_or_path=/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/checkpoints/llava-v1.5-7b # 模型名称
+data_path=/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/finetuning_dataset/finetune_综合.json # 训练的json
+image_folder=/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/finetuning_dataset/image/综合 # 训练的图像数据
+output_dir=/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/checkpoints/llava-v.15-7b-lora-综合 # 输出目录
 
 deepspeed --include $include llava/train/train_mem.py \
     --lora_enable True --lora_r 16 --lora_alpha 32 --mm_projector_lr 2e-5 \
@@ -26,15 +26,15 @@ deepspeed --include $include llava/train/train_mem.py \
     --group_by_modality_length False \
     --bf16 True \
     --output_dir $output_dir \
-    --num_train_epochs 15 \
-    --per_device_train_batch_size 16 \
+    --num_train_epochs 5 \
+    --per_device_train_batch_size 4 \
     --per_device_eval_batch_size 8 \
-    --gradient_accumulation_steps 2 \
+    --gradient_accumulation_steps 1 \
     --evaluation_strategy "no" \
     --save_strategy "steps" \
     --save_steps 100 \
     --save_total_limit 3 \
-    --learning_rate 1e-4 \
+    --learning_rate 5e-5 \
     --weight_decay 0. \
     --warmup_ratio 0.03 \
     --lr_scheduler_type "cosine" \
