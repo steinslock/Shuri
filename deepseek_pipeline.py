@@ -12,6 +12,26 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"  # 使用第一个GPU
 deepseek_model = None
 deepseek_tokenizer = None
 
+# 处理DeepSeek输出，移除思考链
+def clean_deepseek_output(text):
+    """
+    处理DeepSeek输出，移除思考链内容
+    
+    Args:
+        text: DeepSeek模型的输出文本
+        
+    Returns:
+        str: 清理后的文本，不包含思考链
+    """
+    if not text:
+        return text
+        
+    # 移除思考链内容
+    if "</think>" in text:
+        return text.split("</think>")[-1].strip()
+    
+    return text
+
 # 加载DeepSeek模型
 def load_deepseek_model():
     global deepseek_model, deepseek_tokenizer
@@ -98,6 +118,10 @@ def process_with_deepseek(text, prompt_template=None, max_tokens=512, temperatur
     
     # 解码结果，只返回新生成的部分
     result = tokenizer.decode(outputs[0][inputs.input_ids.shape[1]:], skip_special_tokens=True)
+    
+    # 清理输出，移除思考链
+    result = clean_deepseek_output(result)
+    
     return result
 
 # 使用DeepSeek模型进行文本总结 (保持向后兼容)
@@ -122,7 +146,12 @@ def summarize_text(text, custom_prompt=None):
     # 使用自定义提示或默认提示
     prompt_template = custom_prompt if custom_prompt else default_summary_prompt
     
-    return process_with_deepseek(text, prompt_template, max_tokens=512)
+    result = process_with_deepseek(text, prompt_template, max_tokens=512)
+    
+    # 清理输出，移除思考链
+    result = clean_deepseek_output(result)
+    
+    return result
 
 # 使用DeepSeek比较两段文本的异同
 def compare_texts(text1, text2, text1_name="文本1", text2_name="文本2", custom_prompt=None):
@@ -171,7 +200,12 @@ def compare_texts(text1, text2, text1_name="文本1", text2_name="文本2", cust
         prompt = default_compare_prompt.format(**combined_text)
     
     # 直接传递完整的提示，因为文本已经合并到提示中
-    return process_with_deepseek(prompt, None, max_tokens=1024)
+    result = process_with_deepseek(prompt, None, max_tokens=1024)
+    
+    # 清理输出，移除思考链
+    result = clean_deepseek_output(result)
+    
+    return result
 
 # 进行文本评分
 def rate_text(text, criteria_prompt):
@@ -185,7 +219,12 @@ def rate_text(text, criteria_prompt):
     Returns:
         str: 评分结果
     """
-    return process_with_deepseek(text, criteria_prompt, max_tokens=512)
+    result = process_with_deepseek(text, criteria_prompt, max_tokens=512)
+    
+    # 清理输出，移除思考链
+    result = clean_deepseek_output(result)
+    
+    return result
 
 # 当作为脚本直接运行时执行
 if __name__ == "__main__":

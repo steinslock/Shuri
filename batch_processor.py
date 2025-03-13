@@ -14,21 +14,68 @@ from deepseek_pipeline import load_deepseek_model, process_with_deepseek, read_t
 # 导入LLaVA模块
 from Llava import get_llava_description, load_llava_model
 
-# 默认占位符
+# 处理DeepSeek输出，移除思考链
+def clean_deepseek_output(text):
+    """
+    处理DeepSeek输出，移除思考链内容
+    
+    Args:
+        text: DeepSeek模型的输出文本
+        
+    Returns:
+        str: 清理后的文本，不包含思考链
+    """
+    if not text:
+        return text
+        
+    # 移除思考链内容
+    if "</think>" in text:
+        return text.split("</think>")[-1].strip()
+    
+    return text
+
+# deepseek总结模版
 DEFAULT_SUMMARY_PLACEHOLDER = """
-Please summarize the following text in a structured format with bullet points. Ensure that the key points are clear, concise, and well-organized. Only output the summarized content in bullet points.The summary should include:
-- A brief overview of the main idea.
-- Key details and supporting information.
-- Any relevant conclusions or takeaways.
+Please summarize the following text in a structured format with bullet points. Ensure that the key points are clear, concise, and well-organized. Only output the summarized content in bullet points.
 Maintain clarity and coherence while ensuring the summary remains comprehensive. Here is the text:
 {text}
 
 """
+# deepseek比较模版
 DEFAULT_COMPARISON_PLACEHOLDER = """
-Compare the following two texts and assess their relevance. Provide a similarity score from 1 to 10, where 1 means completely unrelated and 10 means highly relevant. Output only the score and a brief explanation in bullet points. Do not include any additional text or commentary.
+We have two pieces of text: Text A and Text B.
 
-Text 1: {text_summary}
-Text 2: {image_description}
+Please evaluate how much of the content from Text A is covered or mentioned in Text B. 
+- Assign a relevance score from 1 to 5, where:
+  - 1 means Text B does not mention any of the points from Text A.
+  - 5 means Text B covers all the points mentioned in Text A.
+- Note that Text B may contain additional information not mentioned in Text A; that extra information should not reduce the score. 
+- The more items from Text A that appear in Text B, the higher the score should be.
+
+Output only:
+1. The relevance score (1–5).
+2. A brief explanation (in a few bullet points) describing which points from Text A are found in Text B, and whether any points from Text A are missing in Text B.
+
+If any information in Text A is not explicitly stated or implied in Text B, reduce the score accordingly. If Text B covers everything from Text A, assign the highest score (5).
+
+Example:
+
+**Text A**:  
+"I ate noodles today. I drank water today."
+**Text B**:  
+"The weather was great. Dad praised me. I ate noodles today. I ate rice. I drank water."
+**Example Answer**:
+Similarity score: 5
+Reason: "I ate noodles today" and "I drank water today" are mentioned in Text B.
+
+Notice how the answer only contains the score and the bullet-point explanation. Please follow this exact format.
+
+Now, apply the same evaluation process to the following texts:
+**Text A**: 
+{text_summary}
+
+**Text B**: 
+{image_description}
 """
 
 # 获取LLaVA的图像描述prompt
@@ -108,6 +155,9 @@ def summarize_text_with_prompt(text, summary_prompt):
         max_tokens=512
     )
     
+    # 清理输出，移除思考链
+    result = clean_deepseek_output(result)
+    
     return result, filled_prompt
 
 # 比较和评分功能
@@ -158,6 +208,9 @@ def compare_and_rate(text_summary, image_description, comparison_prompt):
         
         if not result or result.strip() == "":
             result = "相似度评分: 5分\n\n理由:\n- 无法确定具体相似度，给出中等评分"
+        else:
+            # 清理输出，移除思考链
+            result = clean_deepseek_output(result)
             
         return result, filled_text  # 返回结果和填充后的prompt
     except Exception:
@@ -329,6 +382,8 @@ def batch_process(image_dir, csv_file, text_column, output_dir,
                     text_summary, filled_summary_prompt = summarize_text_with_prompt(text, summary_prompt)
                     if text_summary:
                         print(f"成功生成文本总结，长度: {len(text_summary)} 字符")
+                        # 确保清理了思考链
+                        text_summary = clean_deepseek_output(text_summary)
                         # 清理可能导致CSV问题的字符（仅在CSV输出时需要）
                         if output_format == "csv":
                             text_summary = text_summary.replace('\r', ' ').replace('\n', ' ')
@@ -355,6 +410,8 @@ def batch_process(image_dir, csv_file, text_column, output_dir,
                     
                     if comparison_result:
                         print(f"成功生成比较和评分结果，长度: {len(comparison_result)} 字符")
+                        # 确保清理了思考链
+                        comparison_result = clean_deepseek_output(comparison_result)
                         # 清理可能导致CSV问题的字符（仅在CSV输出时需要）
                         if output_format == "csv":
                             comparison_result = comparison_result.replace('\r', ' ').replace('\n', ' ')

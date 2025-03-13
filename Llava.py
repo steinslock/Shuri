@@ -15,16 +15,17 @@ from llava.mm_utils import tokenizer_image_token
 
 # 默认图像描述提示
 DEFAULT_IMAGE_DESCRIPTION_PROMPT = """
- Is the main subject in the image a building? (Yes / No / Unclear from the image) If there is a building, answer the following questions. You **must** follow the structured response format exactly as shown below. Do **not** provide additional information beyond what is required. Each response **must be numbered** and correspond to the provided question.
 
-        - 1. Is the building under maintenance? You **must** determine it **only by analyzing the visual elements in the image** and you **must** provide visible evidence from the image that supports your answer.     
-        - 2. What are the weather conditions in this image? (e.g., sunny, cloudy, rainy) 
-        - 3. Does the image appear to be taken during the day or at night? 
-        - 4. What is the name of this building?  
-        - 5. Where is it geographically located?  
-        - 6. Provide a brief historical background, including its construction period, cultural significance.  
-        - 7. What architectural style does this building belong to? Describe the decorative elements, colors, and materials used in its construction.   
-        Please answer each question separately in a step-by-step manner, without merging responses.  
+You must answer each question separately in a step-by-step manner, without merging responses. Respond in complete sentences, providing detailed explanations instead of single-word answers. If applicable, give visible evidence from the image to support your response.
+
+1. Is the building under maintenance? You must determine this only by analyzing the visual elements in the image. If yes, describe what visible evidence (e.g., scaffolding, construction signs, workers) supports your answer.
+2. What are the weather conditions in this image? (e.g., sunny, cloudy, rainy). Describe how you determined this from the image.
+3. Does the image appear to be taken during the day or at night? 
+4. What is the name of this building? Answer in a complete sentence. If you are unsure, provide your best guess with reasoning.
+5. Where is it geographically located? If known, state the location clearly in a full sentence. If uncertain, provide your reasoning.
+6. Provide a brief historical background, including its construction period and cultural significance. Use full sentences and provide relevant details.
+7. What architectural style does this building belong to? Describe its decorative elements, colors, and materials using complete and detailed sentences.
+
 """
 
 # 全局变量存储已加载的模型
@@ -205,16 +206,15 @@ else:
 # 设置图像路径和提示
 image_path = "/home/qiangminc/codes/Shuri/relevance_eval/dataset/image/3.jpg"
 prompt = """
-Is the main subject in the image a building? (Yes / No / Unclear from the image) If there is a building, answer the following questions. You **must** follow the structured response format exactly as shown below. Do **not** provide additional information beyond what is required. Each response **must be numbered** and correspond to the provided question.
+You must answer each question separately in a step-by-step manner, without merging responses. Respond in complete sentences, providing detailed explanations instead of single-word answers. If applicable, give visible evidence from the image to support your response.
 
-- 1. Is the building under maintenance? You **must** determine it **only by analyzing the visual elements in the image** and you **must** provide visible evidence from the image that supports your answer.     
-- 2. What are the weather conditions in this image? (e.g., sunny, cloudy, rainy) 
-- 3. Does the image appear to be taken during the day or at night? 
-- 4. What is the name of this building?  
-- 5. Where is it geographically located?  
-- 6. Provide a brief historical background, including its construction period, cultural significance.  
-- 7. What architectural style does this building belong to? Describe the decorative elements, colors, and materials used in its construction.   
-Please answer each question separately in a step-by-step manner, without merging responses.  
+1. Is the building under maintenance? You must determine this only by analyzing the visual elements in the image. If yes, describe what visible evidence (e.g., scaffolding, construction signs, workers) supports your answer.
+2. What are the weather conditions in this image? (e.g., sunny, cloudy, rainy). Describe how you determined this from the image.
+3. Does the image appear to be taken during the day or at night? 
+4. What is the name of this building? Answer in a complete sentence. If you are unsure, provide your best guess with reasoning.
+5. Where is it geographically located? If known, state the location clearly in a full sentence. If uncertain, provide your reasoning.
+6. Provide a brief historical background, including its construction period and cultural significance. Use full sentences and provide relevant details.
+7. What architectural style does this building belong to? Describe its decorative elements, colors, and materials using complete and detailed sentences.
 
 """
 
