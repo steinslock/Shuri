@@ -1,0 +1,8 @@
+{
+  "total_items_processed": 0,
+  "total_time_seconds": 15.36289668083191,
+  "average_time_per_item_seconds": 0,
+  "start_time": "2025-03-13 14:16:49",
+  "end_time": "2025-03-13 14:17:04",
+  "csv_output_file": "/home/qiangminc/codes/Shuri/relevance_eval/results.csv"
+}

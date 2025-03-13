@@ -1,0 +1,7 @@
+{"time":"2025-03-11T20:54:53.167651224+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"/home/qiangminc/codes/Shuri/relevance_eval/finetuning_new/LLaVA/wandb/run-20250311_205453-8r6dzkb5/logs/debug-core.log"}
+{"time":"2025-03-11T20:54:53.282116843+09:00","level":"INFO","msg":"created new stream","id":"8r6dzkb5"}
+{"time":"2025-03-11T20:54:53.282173666+09:00","level":"INFO","msg":"stream: started","id":"8r6dzkb5"}
+{"time":"2025-03-11T20:54:53.282183866+09:00","level":"INFO","msg":"handler: started","stream_id":"8r6dzkb5"}
+{"time":"2025-03-11T20:54:53.282203127+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"8r6dzkb5"}
+{"time":"2025-03-11T20:54:53.282233054+09:00","level":"INFO","msg":"sender: started","stream_id":"8r6dzkb5"}
+{"time":"2025-03-11T20:54:53.598578876+09:00","level":"INFO","msg":"Starting system monitor"}
